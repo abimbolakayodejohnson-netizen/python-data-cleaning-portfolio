@@ -1,0 +1,5 @@
+customer_id,name,age,city,email
+C001,Amina Johnson,28,Lagos,amina@example.com
+C002,Kunle Adebayo,35,Lagos,kunle@example.com
+C003,,22,Abuja,
+C004,Chidi Okafor,,Port Harcourt,chidi@example.com
