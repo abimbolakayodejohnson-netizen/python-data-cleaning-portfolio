@@ -60,3 +60,39 @@ check_df = pd.read_csv('cleaned_customers.csv')
 print(check_df.shape)
 print(check_df.isna().sum())
 print(check_df)
+# creating a cleaning pipeline
+def clean_customers(df):
+    df = df.copy()
+    df['name'] = df['name'].str.strip().str.title()
+    df['city'] = df['city'].str.title()
+    invalid_age = (df['age'] < 0) | (df['age'] > 100)
+    df.loc[invalid_age, 'age'] = pd.NA
+    df = df.drop_duplicates()
+    return df
+original_df = df.copy()
+cleaned_df = clean_customers(df)
+
+print("Original data:")
+print(original_df)
+
+print("\nCleaned data:")
+print(cleaned_df)
+
+print("\nIs the original unchanged?")
+print(df.equals(original_df))
+
+print(cleaned_df)
+print(cleaned_df.shape)
+print(cleaned_df.isna().sum())
+
+# Data quality report
+def report_data_quality(df):
+    print('Rows and columns:', df.shape)
+    print('\nMissing Values')
+    print(df.isna().sum())
+    print('\nDuplicate Rows:', df.duplicated().sum())
+report_data_quality(df)
+
+
+
+
